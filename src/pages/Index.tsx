@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BarChart3 } from "lucide-react";
+import { BarChart3, Shield } from "lucide-react";
 
 const Index = () => {
   return (
@@ -10,12 +10,21 @@ const Index = () => {
         <h1 className="text-4xl font-bold mb-6 text-slate-800 dark:text-slate-100">Welcome to Auto Analytics</h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">Track and manage your auto fleet with real-time analytics.</p>
         
-        <Link to="/analytics">
-          <Button size="lg" className="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white">
-            <BarChart3 className="mr-2 h-5 w-5" />
-            View Analytics
-          </Button>
-        </Link>
+        <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center">
+          <Link to="/analytics">
+            <Button size="lg" className="bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white w-full sm:w-auto">
+              <BarChart3 className="mr-2 h-5 w-5" />
+              User Analytics
+            </Button>
+          </Link>
+          
+          <Link to="/admin">
+            <Button size="lg" className="bg-red-700 dark:bg-red-800 hover:bg-red-600 dark:hover:bg-red-700 text-white w-full sm:w-auto">
+              <Shield className="mr-2 h-5 w-5" />
+              Admin Dashboard
+            </Button>
+          </Link>
+        </div>
       </div>
       
       <div className="mt-16 text-center px-4">
