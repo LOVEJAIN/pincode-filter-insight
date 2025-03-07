@@ -1,7 +1,20 @@
 
 import { Auto } from "@/pages/Analytics";
 
-export const mockAnalyticsData: Auto[] = [
+// Define the item types that autos can carry
+export type ItemType = "Groceries" | "Medicines" | "Food" | "Electronics" | "Clothing";
+
+// Enhanced Auto interface with location data and item type
+export interface EnhancedAuto extends Auto {
+  location: {
+    lat: number;
+    lng: number;
+  };
+  itemType: ItemType;
+  clientId?: string; // Only for admin view
+}
+
+export const mockAnalyticsData: EnhancedAuto[] = [
   {
     id: "A-1001",
     driverName: "Rajesh Kumar",
@@ -9,7 +22,9 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110001",
     cpm: 125,
     status: "active",
-    lastActive: "2023-05-10T08:30:00Z"
+    lastActive: "2023-05-10T08:30:00Z",
+    location: { lat: 28.704060, lng: 77.102493 },
+    itemType: "Groceries"
   },
   {
     id: "A-1002",
@@ -18,7 +33,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110001",
     cpm: 118,
     status: "active",
-    lastActive: "2023-05-10T09:15:00Z"
+    lastActive: "2023-05-10T09:15:00Z",
+    location: { lat: 28.714060, lng: 77.112493 },
+    itemType: "Medicines",
+    clientId: "CL-101"
   },
   {
     id: "A-1003",
@@ -27,7 +45,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110002",
     cpm: 132,
     status: "active",
-    lastActive: "2023-05-10T07:45:00Z"
+    lastActive: "2023-05-10T07:45:00Z",
+    location: { lat: 28.694060, lng: 77.092493 },
+    itemType: "Food",
+    clientId: "CL-102"
   },
   {
     id: "A-1004",
@@ -36,7 +57,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110002",
     cpm: 105,
     status: "inactive",
-    lastActive: "2023-05-09T18:20:00Z"
+    lastActive: "2023-05-09T18:20:00Z",
+    location: { lat: 28.684060, lng: 77.082493 },
+    itemType: "Electronics",
+    clientId: "CL-101"
   },
   {
     id: "A-1005",
@@ -45,7 +69,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110003",
     cpm: 143,
     status: "active",
-    lastActive: "2023-05-10T10:05:00Z"
+    lastActive: "2023-05-10T10:05:00Z",
+    location: { lat: 28.724060, lng: 77.122493 },
+    itemType: "Clothing",
+    clientId: "CL-103"
   },
   {
     id: "A-1006",
@@ -54,7 +81,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110003",
     cpm: 127,
     status: "active",
-    lastActive: "2023-05-10T08:50:00Z"
+    lastActive: "2023-05-10T08:50:00Z",
+    location: { lat: 28.734060, lng: 77.132493 },
+    itemType: "Groceries",
+    clientId: "CL-102"
   },
   {
     id: "A-1007",
@@ -63,7 +93,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110004",
     cpm: 115,
     status: "inactive",
-    lastActive: "2023-05-09T15:30:00Z"
+    lastActive: "2023-05-09T15:30:00Z",
+    location: { lat: 28.744060, lng: 77.142493 },
+    itemType: "Medicines",
+    clientId: "CL-103"
   },
   {
     id: "A-1008",
@@ -72,7 +105,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110004",
     cpm: 138,
     status: "active",
-    lastActive: "2023-05-10T09:40:00Z"
+    lastActive: "2023-05-10T09:40:00Z",
+    location: { lat: 28.754060, lng: 77.152493 },
+    itemType: "Food",
+    clientId: "CL-101"
   },
   {
     id: "A-1009",
@@ -81,7 +117,10 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110005",
     cpm: 130,
     status: "active",
-    lastActive: "2023-05-10T08:15:00Z"
+    lastActive: "2023-05-10T08:15:00Z",
+    location: { lat: 28.764060, lng: 77.162493 },
+    itemType: "Electronics",
+    clientId: "CL-102"
   },
   {
     id: "A-1010",
@@ -90,6 +129,16 @@ export const mockAnalyticsData: Auto[] = [
     pincode: "110005",
     cpm: 122,
     status: "active",
-    lastActive: "2023-05-10T10:20:00Z"
+    lastActive: "2023-05-10T10:20:00Z",
+    location: { lat: 28.774060, lng: 77.172493 },
+    itemType: "Clothing",
+    clientId: "CL-103"
   }
+];
+
+// Add client data for admin view
+export const clientData = [
+  { id: "CL-101", name: "FastDeliveries Ltd" },
+  { id: "CL-102", name: "Urban Logistics" },
+  { id: "CL-103", name: "Metro Carriers" }
 ];

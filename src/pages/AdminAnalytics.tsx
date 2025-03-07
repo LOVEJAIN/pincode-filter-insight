@@ -3,19 +3,22 @@ import { useState, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { RefreshCw, Database, Shield } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RefreshCw, Database, Shield, Map, BarChart3 } from "lucide-react";
 import { format } from "date-fns";
 import AutosList from "@/components/analytics/AutosList";
 import AdminStatsCards from "@/components/analytics/AdminStatsCards";
 import InfoPopover from "@/components/analytics/InfoPopover";
-import { mockAnalyticsData } from "@/data/mockData";
+import { mockAnalyticsData, EnhancedAuto } from "@/data/mockData";
 import { Auto } from "@/pages/Analytics";
+import MapView from "@/components/map/MapView";
 
 const AdminAnalytics = () => {
   const { toast } = useToast();
-  const [autos, setAutos] = useState<Auto[]>([]);
+  const [autos, setAutos] = useState<EnhancedAuto[]>([]);
   const [lastRefreshed, setLastRefreshed] = useState<Date>(new Date());
   const [isLoading, setIsLoading] = useState(false);
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
 
   // Fetch all auto data for admin (no filtering)
   const fetchData = async () => {
@@ -98,9 +101,25 @@ const AdminAnalytics = () => {
               <Database className="mr-2 h-5 w-5 text-slate-500" />
               All Autos Database
             </h2>
+            <Tabs defaultValue="list" className="w-48" onValueChange={(value) => setViewMode(value as "list" | "map")}>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="list">
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  List
+                </TabsTrigger>
+                <TabsTrigger value="map">
+                  <Map className="h-4 w-4 mr-2" />
+                  Map
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
           </div>
           
-          <AutosList autos={autos} isLoading={isLoading} />
+          {viewMode === "list" ? (
+            <AutosList autos={autos} isLoading={isLoading} />
+          ) : (
+            <MapView autos={autos} isAdmin={true} />
+          )}
         </Card>
       </div>
     </div>
