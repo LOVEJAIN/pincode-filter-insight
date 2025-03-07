@@ -4,12 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 interface StatsCardsProps {
   totalAutos: number;
-  activePincodes: number;
+  activeAutos: number;
   averageCpm: number;
-  selectedPincode: string | null;
+  selectedPincode?: string | null;
 }
 
-const StatsCards = ({ totalAutos, activePincodes, averageCpm, selectedPincode }: StatsCardsProps) => {
+const StatsCards = ({ totalAutos, activeAutos, averageCpm, selectedPincode }: StatsCardsProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       <Card>
@@ -30,8 +30,8 @@ const StatsCards = ({ totalAutos, activePincodes, averageCpm, selectedPincode }:
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Active Pincodes</p>
-              <h3 className="text-3xl font-bold">{activePincodes}</h3>
+              <p className="text-sm font-medium text-muted-foreground mb-1">Active Autos</p>
+              <h3 className="text-3xl font-bold">{activeAutos}</h3>
             </div>
             <div className="p-2 bg-emerald-100 rounded-full dark:bg-emerald-900">
               <MapPin className="h-6 w-6 text-emerald-800 dark:text-emerald-300" />

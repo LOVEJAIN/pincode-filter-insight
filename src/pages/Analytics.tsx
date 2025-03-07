@@ -120,6 +120,7 @@ const Analytics = () => {
         totalAutos={totalAutos} 
         activeAutos={activeAutos} 
         averageCpm={averageCpm} 
+        selectedPincode={selectedPincode}
       />
 
       <div className="mt-6">
@@ -150,7 +151,7 @@ const Analytics = () => {
           {viewMode === "list" ? (
             <AutosList autos={filteredAutos} isLoading={isLoading} />
           ) : (
-            <MapView autos={autos} selectedPincode={selectedPincode} />
+            <MapView autos={filteredAutos} selectedPincode={selectedPincode} />
           )}
         </Card>
       </div>

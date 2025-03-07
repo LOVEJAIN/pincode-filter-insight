@@ -29,6 +29,7 @@ const AutoMarker: React.FC<AutoMarkerProps> = ({ auto, isAdmin }) => {
         <div 
           className={`w-8 h-8 rounded-full border-2 border-white shadow-md cursor-pointer flex items-center justify-center ${itemTypeColors[auto.itemType] || 'bg-gray-500'}`}
           aria-label={`Auto ${auto.id}`}
+          title={`Auto ${auto.id} - ${auto.itemType}`}
         >
           <span className="text-xs font-bold text-white">{auto.id.split('-')[1]}</span>
         </div>

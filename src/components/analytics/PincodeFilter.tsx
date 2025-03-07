@@ -10,16 +10,16 @@ import {
 
 interface PincodeFilterProps {
   pincodes: string[];
-  selectedPincode: string | null;
-  onSelectPincode: (pincode: string | null) => void;
+  selectedPincode: string;
+  onChange: (pincode: string) => void;
 }
 
-const PincodeFilter = ({ pincodes, selectedPincode, onSelectPincode }: PincodeFilterProps) => {
+const PincodeFilter = ({ pincodes, selectedPincode, onChange }: PincodeFilterProps) => {
   const handleValueChange = (value: string) => {
     if (value === "all") {
-      onSelectPincode(null);
+      onChange("");
     } else {
-      onSelectPincode(value);
+      onChange(value);
     }
   };
 
